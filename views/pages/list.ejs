@@ -1,9 +1,33 @@
 <%- include('../template/header'); -%>
 
-<% if (user) {  user.forEach(function(users) { %>
-        <li>
-          <strong><%= users.name %></strong>
-        </li>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Age</th>
+      <th scope="col">Number</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% if (user) {  user.forEach(function(users,index) { %>
+  <tr>
+    <th scope="row"><%= index + 1 %></th>
+    <td>
+      <a href="/profile/<%= users.id %>">
+        <strong><%= users.firstName %></strong></td>
+      </a>
+    <td><%= users.lastName %></td>
+    <td><%= users.gender %></td>
+    <td><%= users.age %></td>
+    <td><%= users.number %></td>
+  </tr>
+  </ul>
       <% }); %>
 <% } %>
+</tbody>
+</table>
 <%- include('../template/footer'); -%>
