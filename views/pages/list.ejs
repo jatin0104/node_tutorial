@@ -1,0 +1,9 @@
+<%- include('../template/header'); -%>
+
+<% if (user) {  user.forEach(function(users) { %>
+        <li>
+          <strong><%= users.name %></strong>
+        </li>
+      <% }); %>
+<% } %>
+<%- include('../template/footer'); -%>
