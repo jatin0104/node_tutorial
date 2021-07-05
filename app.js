@@ -7,6 +7,7 @@ var path = require('path');
 
 // INCLUDE TEMPLATE ENGINE
 let ejs = require('ejs');
+const axios = require('axios');
 
 app.set('views', path.join(__dirname, 'views'));
 // Set EJS as templating engine
@@ -22,6 +23,18 @@ app.get('/contact',(req,res)=>{
     res.sendFile(__dirname+'/template/404.html');
 });
 
+// Post page using external api
+app.get('/posts',(req,res)=>{
+
+  axios.get('https://jsonplaceholder.typicode.com/posts').then((response)=>{
+    console.log('res',response);
+    // res.json(response.data);
+    res.render('pages/post', {post:response.data, pageTitle: 'Post Page', menuActive:true});
+}).catch((err)=>{
+    console.log(err);
+})
+
+})
 
 // Profile
 app.get('/profile/:id', (req,res)=>{

@@ -1,0 +1,28 @@
+<%- include('../template/header'); -%>
+
+<h1><%= pageTitle  %> </h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Post</th>
+    </tr>
+  </thead>
+  <tbody>
+
+<% if (post) {  post.forEach(function(posts,index) { %>
+  <tr>
+    <th scope="row"><%= index + 1 %></th>
+    <td>
+        <strong><%= posts.title %></strong></td>
+    <td><%= posts.body %></td>
+
+  </tr>
+  </ul>
+      <% }); %>
+<% } %>
+</tbody>
+</table>
+<%- include('../template/footer'); -%>
